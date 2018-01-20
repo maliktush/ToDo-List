@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.tusharmalik.todowithdb.MainActivity">
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:textAppearance="@style/TextAppearance.AppCompat.Headline"
+            android:id="@+id/tv1"
+            android:text="Item"
+            android:layout_width="wrap_content"
+            android:maxWidth="300dp"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textSize="25dp"
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="Delete"
+            android:id="@+id/b2"
+            android:background="#e6e600"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_toLeftOf="@+id/b2"
+            android:textColor="@color/colorAccent"
+            android:id="@+id/cb1"
+            android:background="#c2f0c2"
+            android:layout_marginRight="6dp"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>
