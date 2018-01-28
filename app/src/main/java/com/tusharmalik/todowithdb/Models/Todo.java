@@ -10,15 +10,10 @@ public class Todo {
     int id;
 
     public Todo(int id,String string, boolean b) {
-        id=id;
-        task=string;
-        done=b;
+        this.id=id;
+        this.task=string;
+        this.done=b;
     }
-
-    public Todo() {
-
-    }
-
     public boolean isChecked() {
         return done;
     }
@@ -31,4 +26,6 @@ public class Todo {
     public void setData(String task) {
         this.task = task;
     }
+
+    public int getId() {return id;}
 }

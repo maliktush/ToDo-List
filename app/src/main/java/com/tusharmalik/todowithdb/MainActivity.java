@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     Button btnadd;
     SQLiteDatabase readDb;
     SQLiteDatabase writeDb;
-    public static final String TAG = "TODOS";
+    public static final String TAG = "gybu";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
                     taskAdapter.notifyDataSetChanged();
 
                     et.setText("");
-                    Toast.makeText(MainActivity.this,"Added to the list",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this,"Added to the list!!",Toast.LENGTH_SHORT).show();
                 }
                 else{
                     Toast.makeText(MainActivity.this,"Please enter the item you want to enter",Toast.LENGTH_SHORT).show();
@@ -97,13 +97,15 @@ public class MainActivity extends AppCompatActivity {
             position++;
             tvitem.setText(thistask.getData());
             cbitem.setChecked(thistask.isChecked());
-            final int ff=position;
+
             delitem.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    int thisID = thistask.getId();
                     tasks.remove(thistask);
                     tasks.trimToSize();
-                    TodoTable.deleteTask(writeDb, ff);
+                    Log.e(TAG, "onClick: "+thisID);
+                    TodoTable.deleteTask(writeDb, thisID);
 
                     Toast.makeText(MainActivity.this,"DELETED!!!",Toast.LENGTH_SHORT).show();
                     notifyDataSetChanged();
@@ -111,19 +113,20 @@ public class MainActivity extends AppCompatActivity {
             });
 
 
-            final int f=position;
+
             cbitem.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
                 @Override
                 public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                    int thisid=thistask.getId();
 
                     if (isChecked) {
                         thistask.setChecked(true);
-                        TodoTable.check(writeDb,true, f);
+                        TodoTable.check(writeDb,true, thisid);
                         Toast.makeText(MainActivity.this,"Checked!!!",Toast.LENGTH_SHORT).show();
                     }
                     else if(!isChecked){
                         thistask.setChecked(false);
-                        TodoTable.check(writeDb,false, f);
+                        TodoTable.check(writeDb,false, thisid);
                         Toast.makeText(MainActivity.this,"Unchecked!!!",Toast.LENGTH_SHORT).show();
                     }
                 }
